@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  background: #a200ff;
+  
+}
+
+
+h1 {
+  color: #fff;
+  text-align: center;
+  margin: 50px;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0 20px;
+  background: #fff;
+  box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s;
+}
+
+ul:hover {
+  box-shadow: 0 4px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+ul li {
+  text-align: center;  
+}
+
+ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: #a200ff;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+}
+
+ul li a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  transform: scaleX(0);
+  bottom: 15px;
+  left: 0;
+  background: #a200ff;
+  transition: all 0.3s ease-in-out;
+}
+
+ul li a:hover::after {
+  transform: scale(1);
+}
+
+ .ham, .hamCheck {
+    display: none;
+  }
+
+@media only screen and (max-width: 600px) {
+   .hamCheck {
+    display: none;
+  }
+  
+  .responsive__nav ul{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transform-origin: bottom;
+    transition: transform 0.3s;
+  }
+  
+  .ham {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    cursor: pointer;
+  }
+  
+  .ham-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 2px;
+    display: block;
+    background: black;
+  }
+  
+  .ham::before, .ham::after {
+    content: "";
+     position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 2px;
+    display: block;
+    background: black;
+    transition: all 0.3s;
+  }
+  
+   .ham::before {
+    top: 40%;
+  }
+  
+   .ham::after {
+    top: 60%;
+  }
+  
+  .hamCheck:checked + .ham {
+    background: #a200ff;
+  }
+  
+   .hamCheck:checked + .ham::after, .hamCheck:checked + .ham::before {
+    background: #fff;
+  }
+  
+  .hamCheck:checked + .ham .ham-middle {
+    opacity: 0;
+  }
+  
+  .hamCheck:checked + .ham::after  {
+     top: 50%;
+     transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .hamCheck:checked + .ham::before  {
+     top: 50%;
+     transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  
+  .hamCheck:checked + .ham + nav.responsive__nav ul  {
+     transform: scaleX(1);
+     height: 100vh;
+  }
+  
+  
+}
